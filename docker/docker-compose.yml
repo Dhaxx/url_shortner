@@ -1,0 +1,52 @@
+name: url-shortener
+
+services:
+
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+
+    container_name: url-shortener-api
+
+    restart: unless-stopped
+
+    ports:
+      - "8000:8000"
+
+    depends_on:
+      - redis
+
+    env_file:
+      - ../.env
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+
+    container_name: url-shortener-frontend
+
+    restart: unless-stopped
+
+    ports:
+      - "8501:8501"
+
+    depends_on:
+      - api
+
+    environment:
+      API_URL: http://api:8000
+
+  redis:
+    image: redis:8-alpine
+
+    container_name: url-shortener-redis
+
+    restart: unless-stopped
+
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:

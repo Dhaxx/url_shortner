@@ -1,0 +1,17 @@
+[project]
+name = "url-shortner"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiosqlite>=0.22.1",
+    "fastapi>=0.141.1",
+    "hiredis>=3.4.0",
+    "pydantic-settings>=2.14.2",
+    "redis>=8.0.1",
+    "sqlmodel>=0.0.39",
+    "streamlit>=1.60.0",
+    "tzdata>=2026.3",
+    "uvicorn>=0.52.0",
+]
