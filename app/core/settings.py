@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     app_name: str = "URL Shortener"
     debug: bool = False
 
+    # CORS
+    cors_origins: list[str] = ["http://localhost:8501"]
+
     # DB Application
     db_host: str = "localhost"
     db_user: str = "sysdba"
