@@ -1,9 +1,8 @@
+from sqlalchemy.ext.asyncio import create_async_engine
 from sqlmodel import SQLModel
 from sqlmodel.ext.asyncio.session import AsyncSession
-from sqlalchemy.ext.asyncio import create_async_engine
 
 from ..core.settings import settings
-from app.api.v1.short_urls.models import ShortUrl
 
 if settings.sgbd_driver == "sqlite":
     engine = create_async_engine(

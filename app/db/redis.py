@@ -1,4 +1,5 @@
 from redis.asyncio import Redis
+
 from app.core.settings import settings
 
 redis = Redis.from_url(

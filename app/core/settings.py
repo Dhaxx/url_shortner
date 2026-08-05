@@ -1,6 +1,8 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from zoneinfo import ZoneInfo
 from datetime import datetime
+from zoneinfo import ZoneInfo
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
 
 class Settings(BaseSettings):
     # Application
@@ -11,7 +13,7 @@ class Settings(BaseSettings):
     db_host: str = "localhost"
     db_user: str = "sysdba"
     db_password: str = "masterkey"
-    db_name: str = "app.db"
+    db_name: str = "/data/app.db"
     sgbd_driver: str = "sqlite"
 
     # Security

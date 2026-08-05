@@ -2,11 +2,10 @@ import asyncio
 import logging
 
 from sqlmodel.ext.asyncio.session import AsyncSession
-from app.api.v1.short_urls.services import ShortUrlService
 
+from app.api.v1.short_urls.factories import create_short_url_service
 from app.db.engine import engine
 from app.db.redis import get_redis
-from app.api.v1.short_urls.factories import create_short_url_service
 
 logger = logging.getLogger(__name__)
 

@@ -1,7 +1,9 @@
-from typing import Iterable
+from collections.abc import Iterable
 
 from redis.asyncio import Redis
+
 from app.core.settings import settings
+
 
 class ShortUrlCache:
     PREFIX = 'short:'

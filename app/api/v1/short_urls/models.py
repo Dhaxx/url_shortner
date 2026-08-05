@@ -1,7 +1,10 @@
-from sqlmodel import SQLModel, Field, DateTime, Column
 from datetime import datetime, timedelta
+from uuid import UUID, uuid4
+
+from sqlmodel import Column, DateTime, Field, SQLModel
+
 from app.core.settings import settings
-from uuid import uuid4, UUID
+
 
 class ShortUrl(SQLModel, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)

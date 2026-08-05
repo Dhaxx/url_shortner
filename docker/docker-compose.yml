@@ -20,6 +20,9 @@ services:
     env_file:
       - ../.env
 
+    volumes:
+      - app_data:/data
+
   frontend:
     build:
       context: ..
@@ -50,3 +53,4 @@ services:
 
 volumes:
   redis_data:
+  app_data:

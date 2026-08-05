@@ -1,8 +1,10 @@
 from fastapi import HTTPException
 from fastapi.responses import RedirectResponse
-from .repository import ShortUrlRepository
+
 from .cache import ShortUrlCache
 from .models import ShortUrl
+from .repository import ShortUrlRepository
+
 
 class ShortUrlService:
     def __init__(

@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends, status, Request
+from fastapi import APIRouter, Depends, Request, status
 from fastapi.responses import RedirectResponse
 
 from .dependencies import get_short_url_service
-from .services import ShortUrlService
 from .schemas import ShortenRequest, ShortenResponse
+from .services import ShortUrlService
 
 router = APIRouter(
     tags=["Short URLs"]

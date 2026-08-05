@@ -1,5 +1,7 @@
-from pydantic import BaseModel, HttpUrl
 from datetime import datetime
+
+from pydantic import BaseModel, HttpUrl
+
 
 class ShortenRequest(BaseModel):
     url: HttpUrl
