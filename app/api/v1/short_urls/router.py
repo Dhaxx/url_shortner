@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Request, status
 from fastapi.responses import RedirectResponse
 
-from .dependencies import get_short_url_service
+from .dependencies import get_short_url_service, rate_limit_shorten
 from .schemas import ShortenRequest, ShortenResponse
 from .services import ShortUrlService
 
@@ -13,6 +13,7 @@ router = APIRouter(
     "/shorten",
     response_model=ShortenResponse,
     status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(rate_limit_shorten)]
 )
 async def create_short_url(
     request_data: ShortenRequest,
