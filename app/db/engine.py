@@ -4,26 +4,27 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 
 from ..core.settings import settings
 
-if settings.sgbd_driver == "sqlite":
-    engine = create_async_engine(
-        settings.db_url.replace(
-            "sqlite:///",
-            "sqlite+aiosqlite:///"
-        ),
-        echo=True,
-    )
-else:
-    engine = create_async_engine(
-        settings.db_url.replace(
-            "postgresql://",
-            "postgresql+asyncpg://"
-        ),
-        echo=True,
-        pool_size=20,
-        max_overflow=40,
-        pool_pre_ping=True,
-        pool_recycle=3600,
-    )
+match settings.sgbd_driver:
+    case "sqlite":
+        engine = create_async_engine(
+            settings.db_url.replace(
+                "sqlite:///",
+                "sqlite+aiosqlite:///"
+            ),
+            echo=True,
+        )
+
+    case "postgresql":
+        engine = create_async_engine(
+            settings.db_url.replace(
+                "postgresql://",
+                "postgresql+asyncpg://"
+            ),
+            echo=True,
+        )
+        
+    case _:
+        raise ValueError(f"Unsupported SGBD driver: {settings.sgbd_driver}")
 
 async def create_db_and_tables():
     async with engine.begin() as conn:
