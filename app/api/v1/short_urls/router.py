@@ -4,6 +4,7 @@ from fastapi.responses import RedirectResponse
 from .dependencies import get_short_url_service, rate_limit_shorten
 from .schemas import ShortenRequest, ShortenResponse
 from .services import ShortUrlService
+from app.core.settings import settings
 
 router = APIRouter(
     tags=["Short URLs"]
@@ -23,7 +24,7 @@ async def create_short_url(
     short_url = await service.create(request_data.url)
 
     return ShortenResponse(
-        short_url=f"{request.base_url}{short_url.short_code}",
+        short_url=f"{settings.public_api_base_url.rstrip('/')}/{short_url.short_code}",
         expires_at=short_url.expires_at
     )
 

@@ -210,7 +210,7 @@ Response
 
 ```json
 {
-  "shortUrl": "http://localhost:8080/AbC123",
+  "shortUrl": "http://localhost:8001/AbC123",
   "expiresAt": "2026-08-03T11:37:13.288549"
 }
 ```

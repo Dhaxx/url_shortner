@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     # CORS
     cors_origins: list[str] = ["http://localhost:8501"]
 
+    # Public API URL used to build shortened links returned to the client
+    public_api_base_url: str = "http://localhost:8001"
+
     # DB Application
     db_host: str = "localhost"
     db_user: str = "sysdba"
